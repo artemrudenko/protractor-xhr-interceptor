@@ -1,0 +1,35 @@
+{
+  "name": "protractor-xhr-interceptor-plugin",
+  "version": "0.1.0",
+  "description": "Protractor XHR/Fetch interceptor plugin",
+  "scripts": {
+    "build": "tsc",
+    "protractor": "protractor",
+    "test": "protractor",
+    "webdriver-manager": "webdriver-manager",
+    "webdriver-update": "webdriver-manager update"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artemrudenko/protractor-xhr-interceptor.git"
+  },
+  "author": "artemr2009@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/artemrudenko/protractor-xhr-interceptor/issues"
+  },
+  "homepage": "https://github.com/artemrudenko/protractor-xhr-interceptor#readme",
+  "dependencies": {
+    "@types/jasmine": "^3.6.2",
+    "protractor": "^7.0.0",
+    "ts-node": "^9.1.1",
+    "tslib": "^2.1.0",
+    "typescript": "^4.1.3"
+  },
+  "keywords": [
+    "protractor",
+    "plugin",
+    "xhr",
+    "intercept"
+  ]
+}
