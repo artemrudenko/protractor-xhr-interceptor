@@ -1,11 +1,11 @@
 {
   "name": "protractor-xhr-interceptor-plugin",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Protractor XHR/Fetch interceptor plugin",
   "scripts": {
     "build": "tsc",
     "protractor": "protractor",
-    "test": "protractor",
+    "test": "protractor ./spec/protractor.conf.js",
     "webdriver-manager": "webdriver-manager",
     "webdriver-update": "webdriver-manager update"
   },
@@ -18,6 +18,8 @@
   "bugs": {
     "url": "https://github.com/artemrudenko/protractor-xhr-interceptor/issues"
   },
+  "main": "dist/index",
+  "types": "dist/index.d.ts",
   "homepage": "https://github.com/artemrudenko/protractor-xhr-interceptor#readme",
   "dependencies": {
     "@types/jasmine": "^3.6.2",

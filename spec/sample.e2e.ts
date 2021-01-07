@@ -50,7 +50,7 @@ describe('XHR Interceptor Sample', () => {
     await browser.assertRequests();
   });
 
-  fit('should fail if no expected request was found', async () => {
+  it('should fail if no expected request was found', async () => {
     await browser.expectRequest('GET', 'generated/docs/docs.json', 200);
     await browser.expectRequest('GET', 'generated/docs/guide/setup-local.json', 200);
 
