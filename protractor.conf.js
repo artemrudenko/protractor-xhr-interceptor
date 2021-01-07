@@ -12,6 +12,6 @@ exports.config = {
     browserName: 'chrome'
   },
   plugins: [
-    { path: './src/xhr.interceptor.plugin.ts' }
+    { path: './src/index.ts' }
   ]
 };

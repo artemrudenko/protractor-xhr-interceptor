@@ -8,7 +8,9 @@ describe('XHR Interceptor Sample', () => {
     await browser.addInterceptor();
   });
 
-  it('intercept requests and store them', async () => {
+  afterAll(async () => await browser.clear());
+
+  it('should allow to intercept requests', async () => {
     const getStartedLink = element(by.xpath('//a[contains(.,"Get Started")]'));
     const getStartedSection = element(by.xpath('//section[contains(.,"Get Started")]'));
     const tryAngularHeader = element(by.xpath('//header[contains(.,"Try Angular without local setup")]'));
@@ -26,5 +28,35 @@ describe('XHR Interceptor Sample', () => {
         "generated/docs/docs.json",
         "generated/docs/guide/setup-local.json"
       ]);
+  });
+
+  it('should allow to add requests expectations', async () => {
+    await browser.expectRequest('GET', 'generated/docs/docs.json', 200);
+    await browser.expectRequest('GET', 'generated/docs/guide/setup-local.json', 200);
+
+    const expectations = await browser.getExpectations();
+    expect(expectations.length).toEqual(2);
+
+    const getStartedLink = element(by.xpath('//a[contains(.,"Get Started")]'));
+    const getStartedSection = element(by.xpath('//section[contains(.,"Get Started")]'));
+    const tryAngularHeader = element(by.xpath('//header[contains(.,"Try Angular without local setup")]'));
+
+    await getStartedLink.click();
+
+    await browser.wait(ExpectedConditions.presenceOf(getStartedSection), timeout);
+    await getStartedSection.click();
+    await browser.wait(ExpectedConditions.presenceOf(tryAngularHeader), timeout);
+
+    await browser.assertRequests();
+  });
+
+  fit('should fail if no expected request was found', async () => {
+    await browser.expectRequest('GET', 'generated/docs/docs.json', 200);
+    await browser.expectRequest('GET', 'generated/docs/guide/setup-local.json', 200);
+
+    const getStartedLink = element(by.xpath('//a[contains(.,"Get Started")]'));
+    await getStartedLink.click();
+
+    await browser.assertRequests();
   });
 });
